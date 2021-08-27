@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Login
 Route::post('/create-token', [AuthController::class, 'create_token']);
-Route::post('/register', [AuthController::class, 'store']);
+Route::post('/register', [AuthController::class, 'register']);
 
 // User subscription
 Route::post('/subscriber', [SubscriberController::class, 'subscribe']);

@@ -7,6 +7,23 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Project Setup Instructions
+
+1. Clone this repo to your local / remote server.
+2. Navigate to the application directory `cd Laravel-Multisite-Blog`.
+3. Copy `.env.example` to `.env` and update configuration values (Importantly the database connection and mail server configurations).
+4. Run the following commands-\
+    `composer install`\
+    `php artisan key:generate`\
+    `php artisan migrate`\
+    `php artisan serve`
+5. Now you can access the site at [http://127.0.0.1:8000/](http://127.0.0.1:8000/), or follow the url displayed after the `php artisan serve` command.
+6. To test the APIs import [Postman Collections](Laravel_Multisite_Blog.postman_collection.json) to your local Postman setup.
+7. To run the queue to send post notifications to the subscribers after publishing posts run:\
+`php artisan queue:work`.\
+Also you can send post notifications for a specific post immediately after publishing it by running this command:\
+`php artisan mail:sendpostnotification post_id` (replace post_id with the actual post id.)
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
