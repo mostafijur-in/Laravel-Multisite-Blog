@@ -15,9 +15,9 @@ class CreateMailerJobsTable extends Migration
     {
         Schema::create('mailer_jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('model_name');
+            $table->string('model');
             $table->bigInteger('model_id');
-            $table->string('status')->nullable();
+            $table->string('status')->nullable();   // running|complete
             $table->timestamps();
         });
     }

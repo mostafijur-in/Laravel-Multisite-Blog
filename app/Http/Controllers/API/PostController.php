@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use Exception;
+use Illuminate\Support\Facades\Artisan;
 
 class PostController extends Controller
 {
@@ -89,6 +90,10 @@ class PostController extends Controller
                     'status'        => $status,
                 ]);
 
+                if($status === 'publish') {
+                    Artisan::call("mail:sendpostnotification {$Post->id} --queue");
+                }
+
                 return response()->json([
                     'status'    => 'success',
                     'message'   => 'Post created successfull.',
@@ -136,6 +141,10 @@ class PostController extends Controller
                 Post::find($post_id)->update([
                     'status'        => $status,
                 ]);
+
+                if($status === 'publish') {
+                    Artisan::call("mail:sendpostnotification {$post_id} --queue");
+                }
 
                 return response()->json([
                     'status'    => 'success',
@@ -189,4 +198,5 @@ class PostController extends Controller
     {
         //
     }
+
 }

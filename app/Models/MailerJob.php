@@ -15,7 +15,7 @@ class MailerJob extends Model
      * @var string[]
      */
     protected $fillable = [
-        'model_name',
+        'model',
         'model_id',
         'status',
     ];
